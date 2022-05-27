@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom"; //
+import { BrowserRouter, Link, Route, Routes } from "react-router-dom"; //
 
 const PageOne = () => {
   return <div>Page One</div>;
@@ -13,11 +13,26 @@ const PageTwo = () => {
   );
 };
 
+const Nav = () => {
+  return (
+    <ul style={{ listStyle: "none" }}>
+      <li>
+        <Link to="/">PageOne</Link>
+      </li>
+      <li>
+        <Link to="/pagetwo">PageTwo</Link>
+      </li>
+    </ul>
+  );
+};
+
 const App = () => {
   return (
     <div>
-      {/* BrowserRouter is a react component and when we create an instance of it, it automatically creates the history component that will track of the address bar in our browser */}
       <BrowserRouter>
+        <Nav />
+        {/* BrowserRouter is a react component and when we create an instance of it, it automatically creates the history component that will track of the address bar in our browser */}
+
         <div>
           {/*ROUTES will contain the <Route>s that will match the specific path to the component that should be rendered */}
           <Routes>
