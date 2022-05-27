@@ -1,6 +1,11 @@
 import React from "react";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom"; //
 
+import StreamShow from "./streams/StreamShow";
+import StreamCreate from "./streams/StreamCreate";
+import StreamEdit from "./streams/StreamEdit";
+import StreamDelete from "./streams/StreamDelete";
+
 const PageOne = () => {
   return <div>Page One</div>;
 };
