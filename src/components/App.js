@@ -16,11 +16,12 @@ const PageTwo = () => {
 const App = () => {
   return (
     <div>
+      {/* BrowserRouter is a react component and when we create an instance of it, it automatically creates the history component that will track of the address bar in our browser */}
       <BrowserRouter>
         <div>
           {/*ROUTES will contain the <Route>s that will match the specific path to the component that should be rendered */}
           <Routes>
-            <Route exact path="/" element={<PageOne />} />{" "}
+            <Route path="/" element={<PageOne />} />{" "}
             {/*in the element's prop we pass the component we want to render */}
             <Route path="/pagetwo" element={<PageTwo />} />
           </Routes>
