@@ -15,18 +15,24 @@ const GoogleOauth = () => {
         "252766093641-c780p8g3i3e79o2v6uvc46vqjv8dg2mj.apps.googleusercontent.com",
       scope: "email",
       callback: (tokenResponse) => {
-        console.log(tokenResponse);
-        token = tokenResponse.access_token;
+        // console.log(tokenResponse);
+        setToken(tokenResponse.access_token);
         // console.log(token);
       },
     });
 
     client.requestAccessToken();
 
-    console.log(client.i);
+    // console.log(client.i);
   }, []);
 
-  return <div>Google Oauth</div>;
+  const renderButton = () => {
+    if (token === null) return <div>I dont know I am signed in</div>;
+    else if (token) return <div>I am signed in</div>;
+    else return <div>I am signed out</div>;
+  };
+
+  return <div>{renderButton()}</div>;
 };
 
 export default GoogleOauth;
