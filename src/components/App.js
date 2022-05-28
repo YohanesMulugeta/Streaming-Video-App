@@ -8,6 +8,8 @@ import StreamDelete from "./streams/StreamDelete";
 import StreamList from "./streams/StreamList";
 import Header from "./Header";
 
+// OAouthClientId = 252766093641-c780p8g3i3e79o2v6uvc46vqjv8dg2mj.apps.googleusercontent.com
+
 const App = () => {
   return (
     <div className="ui container">
