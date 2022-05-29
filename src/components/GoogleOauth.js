@@ -1,63 +1,59 @@
 import React, { useEffect, useState } from "react";
 
 let client = {};
+let auth;
 const GoogleOauth = () => {
   let access_token = {};
   //   let token;
 
   const [token, setToken] = useState(null);
 
-  //   const [isSignedIn, setSignedIn] = useState(null);
-  // Initializing the Library
   useEffect(() => {
-    client = window.google.accounts.oauth2.initTokenClient({
+    auth = window.google.accounts.oauth2;
+
+    client = auth.initTokenClient({
       client_id:
         "252766093641-c780p8g3i3e79o2v6uvc46vqjv8dg2mj.apps.googleusercontent.com",
       scope: "email",
       callback: (tokenResponse) => {
-        console.log(tokenResponse);
+        // console.log(tokenResponse);
         setToken(tokenResponse.access_token);
-        console.log(token);
+        // console.log(token);
       },
     });
 
-    // console.log(client);
-
     client.requestAccessToken();
-
-    // console.log(client.i);
   }, []);
 
+  const onSignIn = () => {
+    client.requestAccessToken();
+  };
+
+  const onSignOut = () => {
+    auth.revoke(token, () => {
+      setToken(undefined);
+    });
+  };
+
   const renderButton = () => {
-    if (token === null) return <div>I dont know I am signed in</div>;
+    if (token === null) return null;
     else if (token)
       return (
+        //---------------------------------------------------- btn SingOut
         <div>
-          I am signed in
-          <button
-            onClick={() => {
-              window.google.accounts.oauth2.revoke(token, () => {
-                setToken(undefined);
-                console.log(token);
-                console.log("signed out");
-              });
-            }}
-          >
-            signOut
+          <button className="ui red google button" onClick={onSignOut}>
+            <i className="google icon" />
+            Sign Out
           </button>
         </div>
       );
     else
       return (
+        // ---------------------------------------------------- btn signIn
         <div>
-          I am signed out{" "}
-          <button
-            onClick={() => {
-              //   client.requestAccessToken();
-              client.requestAccessToken();
-            }}
-          >
-            sign in with google
+          <button className="ui red google button" onClick={onSignIn}>
+            <i className="google icon" />
+            Sign In with Google
           </button>
         </div>
       );
