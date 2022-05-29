@@ -3,14 +3,16 @@ import React, { useEffect, useState } from "react";
 let client = {};
 let auth;
 const GoogleOauth = () => {
-  let access_token = {};
+  // let access_token = {};
   //   let token;
 
   const [token, setToken] = useState(null);
 
+  // ------------------------------------------------------------- Component Did Mount
   useEffect(() => {
     auth = window.google.accounts.oauth2;
 
+    // ----------------------------------------------------------- init Client Library
     client = auth.initTokenClient({
       client_id:
         "252766093641-c780p8g3i3e79o2v6uvc46vqjv8dg2mj.apps.googleusercontent.com",
@@ -22,14 +24,14 @@ const GoogleOauth = () => {
       },
     });
 
-    client.requestAccessToken();
+    // client.requestAccessToken();
   }, []);
 
-  const onSignIn = () => {
+  const onSignInClick = () => {
     client.requestAccessToken();
   };
 
-  const onSignOut = () => {
+  const onSignOutClick = () => {
     auth.revoke(token, () => {
       setToken(undefined);
     });
@@ -41,7 +43,7 @@ const GoogleOauth = () => {
       return (
         //---------------------------------------------------- btn SingOut
         <div>
-          <button className="ui red google button" onClick={onSignOut}>
+          <button className="ui red google button" onClick={onSignOutClick}>
             <i className="google icon" />
             Sign Out
           </button>
@@ -51,7 +53,7 @@ const GoogleOauth = () => {
       return (
         // ---------------------------------------------------- btn signIn
         <div>
-          <button className="ui red google button" onClick={onSignIn}>
+          <button className="ui red google button" onClick={onSignInClick}>
             <i className="google icon" />
             Sign In with Google
           </button>
