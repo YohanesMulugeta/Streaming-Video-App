@@ -18,8 +18,10 @@ const GoogleOauth = () => {
         "252766093641-c780p8g3i3e79o2v6uvc46vqjv8dg2mj.apps.googleusercontent.com",
       scope: "email",
       callback: (tokenResponse) => {
+        if (tokenResponse && tokenResponse.access_token)
+          if (auth.hasGrantedAnyScope(tokenResponse, "email"))
+            setToken(tokenResponse.access_token);
         // console.log(tokenResponse);
-        setToken(tokenResponse.access_token);
         // console.log(token);
       },
     });
