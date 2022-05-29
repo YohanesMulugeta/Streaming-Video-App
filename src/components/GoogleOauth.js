@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 let client = {};
 let auth;
-const GoogleOauth = () => {
+const GoogleOauth = (props) => {
   // let access_token = {};
   //   let token;
 
@@ -11,6 +11,7 @@ const GoogleOauth = () => {
   // ------------------------------------------------------------- Component Did Mount
   useEffect(() => {
     auth = window.google.accounts.oauth2;
+    // console.log(auth);
 
     // ----------------------------------------------------------- init Client Library
     client = auth.initTokenClient({
@@ -19,8 +20,12 @@ const GoogleOauth = () => {
       scope: "email",
       callback: (tokenResponse) => {
         if (tokenResponse && tokenResponse.access_token)
-          if (auth.hasGrantedAnyScope(tokenResponse, "email"))
-            setToken(tokenResponse.access_token);
+          if (auth.hasGrantedAnyScope(tokenResponse, "email")) {
+            props.signIn();
+            console.log(tokenResponse);
+          }
+        // setToken(tokenResponse.access_token);
+
         // console.log(tokenResponse);
         // console.log(token);
       },
@@ -35,12 +40,23 @@ const GoogleOauth = () => {
 
   const onSignOutClick = () => {
     auth.revoke(token, () => {
-      setToken(undefined);
+      // console.log(k);
+      props.signOut();
+      // console.log(props);
     });
   };
 
   const renderButton = () => {
-    if (token === null) return null;
+    if (token === null)
+      return (
+        //---------------------------------------------------- btn SingOut
+        <div>
+          <button className="ui red google button" onClick={onSignOutClick}>
+            <i className="google icon" />
+            Sign Out
+          </button>
+        </div>
+      );
     else if (token)
       return (
         //---------------------------------------------------- btn SingOut
