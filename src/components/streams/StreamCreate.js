@@ -5,24 +5,29 @@ import { Field } from "redux-form";
 // Field is Capital because it is a react component
 
 class StreamCreate extends React.Component {
-  renderInput(formProps) {
-    console.log(formProps);
+  renderInput({ input, label }) {
+    console.log(input);
     return (
-      <input
-        // this onChange method is provided by the redux-form to handle the input field onchange event
-        onChange={formProps.input.onChange}
-        // this value is provided by REDUX-FORM from the redux-state
-        value={formProps.input.value}
-      />
+      <div className="field">
+        <label>{label}</label>
+        <input {...input} />{" "}
+        {/* // this will put all the key value pairs as a prop
+        to the input component */}
+      </div>
     );
   }
 
   render() {
     console.log(this.props);
     return (
-      <form>
-        <Field name="title" component={this.renderInput} />
-        <Field name="description" component={this.renderInput} />
+      <form className="ui form">
+        {/* ------------------------------------------------------------------------- any prop we pass to the Field component other than those recogised by redux-form will be passed to the renderedField component */}
+        <Field name="title" component={this.renderInput} label="Enter Title" />
+        <Field
+          name="description"
+          component={this.renderInput}
+          label="Enter Description"
+        />
       </form>
     );
   }
