@@ -3,6 +3,8 @@ import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware, compose } from "redux";
 
+// ---------------------------------------- REDUX-FORM
+
 import App from "./components/App";
 import reducers from "./reducers";
 

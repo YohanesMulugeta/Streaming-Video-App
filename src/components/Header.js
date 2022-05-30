@@ -7,12 +7,12 @@ const Header = () => {
   return (
     <div className="ui secondary pointing menu">
       <Link to="/" className="item">
-        Streamer
+        Stream
       </Link>
 
       <div className="right menu">
-        <Link to="/" className="item">
-          All Streams
+        <Link to="/streams/new" className="item">
+          StreamCreate
         </Link>
         <GoogleOauth />
       </div>
