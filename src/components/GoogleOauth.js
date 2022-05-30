@@ -17,35 +17,30 @@ const GoogleOauth = (props) => {
     client = auth.initTokenClient({
       client_id:
         "252766093641-c780p8g3i3e79o2v6uvc46vqjv8dg2mj.apps.googleusercontent.com",
-      scope: "email",
+      scope: `email \ profile`,
       callback: (tokenResponse) => {
         if (tokenResponse && tokenResponse.access_token)
           if (auth.hasGrantedAnyScope(tokenResponse, "email")) {
-            // console.log(tokenResponse);
             props.signIn(tokenResponse);
-            // console.log(tokenResponse);
+            console.log(auth);
           }
-        // setToken(tokenResponse.access_token);
-
-        // console.log(tokenResponse);
-        // console.log(token);
       },
     });
 
     // client.requestAccessToken();
   }, []);
 
+  // ------------------------------------------------------------ SIGNIN handler
+
   const onSignInClick = () => {
     client.requestAccessToken();
   };
 
+  // ------------------------------------------------------------ SIGNOUT handler
+
   const onSignOutClick = () => {
     auth.revoke(props.auth.isSignedIn, () => {
-      // console.log(k);
       props.signOut();
-      // console.log(props.auth);
-      // console.log(auth.hasGrantedAnyScope(props.auth.tokenResponse, "email"));
-      // console.log(props);
     });
   };
 
