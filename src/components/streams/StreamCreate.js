@@ -5,8 +5,16 @@ import { Field } from "redux-form";
 // Field is Capital because it is a react component
 
 class StreamCreate extends React.Component {
-  renderInput() {
-    return <div>I am an input field</div>;
+  renderInput(formProps) {
+    console.log(formProps);
+    return (
+      <input
+        // this onChange method is provided by the redux-form to handle the input field onchange event
+        onChange={formProps.input.onChange}
+        // this value is provided by REDUX-FORM from the redux-state
+        value={formProps.input.value}
+      />
+    );
   }
 
   render() {
