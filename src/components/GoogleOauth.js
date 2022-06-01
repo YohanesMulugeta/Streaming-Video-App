@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
 let client = {};
 let auth;
@@ -17,7 +17,7 @@ const GoogleOauth = (props) => {
     client = auth.initTokenClient({
       client_id:
         "252766093641-c780p8g3i3e79o2v6uvc46vqjv8dg2mj.apps.googleusercontent.com",
-      scope: `email \ profile`,
+      scope: `email`,
       callback: (tokenResponse) => {
         if (tokenResponse && tokenResponse.access_token)
           if (auth.hasGrantedAnyScope(tokenResponse, "email")) {
