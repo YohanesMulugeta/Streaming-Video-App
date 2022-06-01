@@ -25,13 +25,6 @@ export const createStream = (formValues) => async (dispach) => {
   dispach({ type: CREATE_STREAM, payload: data });
 };
 
-// ---------------------------------------------------------------------------- FETCH-SINGLE
-export const fetchStream = (id) => async (dispach) => {
-  const { data } = await streams.get(`/streams:${id}`);
-
-  dispach({ type: FETCH_STREAM, payload: data });
-};
-
 // ---------------------------------------------------------------------------- FETCH MULTIPLE
 export const fetchStreams = () => async (dispach) => {
   const { data } = await streams.get("/streams");
@@ -39,16 +32,23 @@ export const fetchStreams = () => async (dispach) => {
   dispach({ type: FETCH_STREAMS, payload: data });
 };
 
+// ---------------------------------------------------------------------------- FETCH-SINGLE
+export const fetchStream = (id) => async (dispach) => {
+  const { data } = await streams.get(`/streams/${id}`);
+
+  dispach({ type: FETCH_STREAM, payload: data });
+};
+
 // ---------------------------------------------------------------------------- EDIT
-export const editStream = (id) => async (dispach) => {
-  const { data } = await streams.post(`/streams:${id}`);
+export const editStream = (id, updateValue) => async (dispach) => {
+  const { data } = await streams.put(`/streams/${id}`);
 
   dispach({ type: EDIT_STREAM, payload: data });
 };
 
 // ---------------------------------------------------------------------------- DELETE
 export const deleteStream = (id) => async (dispach) => {
-  const { data } = await streams(`/streams:${id}`);
+  await streams.delete(`/streams/${id}`);
 
-  dispach({ type: CREATE_STREAM, payload: data });
+  dispach({ type: CREATE_STREAM, payload: id });
 };
