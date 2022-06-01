@@ -6,7 +6,7 @@ import { Field } from "redux-form";
 
 class StreamCreate extends React.Component {
   renderInput({ input, label }) {
-    console.log(input);
+    // console.log(input);
     return (
       <div className="field">
         <label>{label}</label>
@@ -17,17 +17,26 @@ class StreamCreate extends React.Component {
     );
   }
 
+  onSubmit(formValues) {
+    console.log(formValues);
+  }
+
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     return (
-      <form className="ui form">
-        {/* ------------------------------------------------------------------------- any prop we pass to the Field component other than those recogised by redux-form will be passed to the renderedField component */}
+      <form
+        onSubmit={this.props.handleSubmit(this.onSubmit)}
+        // {/* handleSubmit is a function provided by the redux-form through the reduxForm connect function */}
+        className="ui form"
+      >
+        {/* ------------------------------------------------------------------------- any prop we pass to the Field component other than those recognised by redux-form will be passed to the the component passed to  component prop */}
         <Field name="title" component={this.renderInput} label="Enter Title" />
         <Field
           name="description"
           component={this.renderInput}
           label="Enter Description"
         />
+        <button className="ui button primary">Submit</button>
       </form>
     );
   }
