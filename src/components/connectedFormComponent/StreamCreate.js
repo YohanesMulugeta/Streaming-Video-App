@@ -1,6 +1,8 @@
+import { connect } from "react-redux";
 import { reduxForm } from "redux-form";
 
 import StreamCreate from "../streams/StreamCreate";
+import { createStream } from "../../actions";
 
 const validate = (formValues) => {
   const errors = {};
@@ -14,6 +16,8 @@ const validate = (formValues) => {
   return errors;
 };
 
-export default reduxForm({ form: "StreamCreate", validate: validate })(
+const wrappedForm = reduxForm({ form: "StreamCreate", validate: validate })(
   StreamCreate
 );
+
+export default connect(null, { createStream })(wrappedForm);
