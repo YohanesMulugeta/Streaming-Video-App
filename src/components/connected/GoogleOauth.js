@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import GoogleOauth from "../GoogleOauth";
 import { signIn, signOut } from "../../actions";
 
-const mapStateToProps = (state, lala) => {
+const mapStateToProps = (state) => {
   // console.log(lala);
   // console.log(state);
 

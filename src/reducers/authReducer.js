@@ -7,9 +7,9 @@ const INITIAL_STATE = {
 const authReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case SIGN_IN:
-      return { ...state, isSignedIn: true, tokenResponse: action.payload };
+      return { ...state, isSignedIn: true, userId: action.payload };
     case SIGN_OUT:
-      return { ...state, isSignedIn: false, tokenResponse: action.payload };
+      return { ...state, isSignedIn: false, userId: action.payload };
 
     default:
       return state;

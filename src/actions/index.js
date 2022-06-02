@@ -10,17 +10,23 @@ import {
 
 import streams from "../api/streams";
 
-export const signIn = (res) => {
-  return { type: SIGN_IN, payload: res };
+const USER_ID_TEST = 23455433455677;
+
+//-------------------------------------------------------------------------- Sign-In
+export const signIn = () => {
+  return { type: SIGN_IN, payload: USER_ID_TEST };
 };
 
+// ------------------------------------------------------------------------- Sign-Out
 export const signOut = () => {
-  return { type: SIGN_OUT, payload: {} };
+  return { type: SIGN_OUT, payload: null };
 };
 
 // ---------------------------------------------------------------------------- CREATE
-export const createStream = (formValues) => async (dispach) => {
-  const { data } = await streams.post("/streams", formValues);
+export const createStream = (formValues) => async (dispach, getState) => {
+  const { userId } = getState().auth;
+
+  const { data } = await streams.post("/streams", { ...formValues, userId });
 
   dispach({ type: CREATE_STREAM, payload: data });
 };
