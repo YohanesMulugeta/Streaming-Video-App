@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-const StreamList = () => {
+const StreamList = (props) => {
+  useEffect(() => {
+    props.fetchStreams();
+  }, []);
   return <div>StreamList</div>;
 };
 

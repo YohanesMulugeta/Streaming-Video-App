@@ -5,7 +5,7 @@ import StreamShow from "./streams/StreamShow";
 import StreamCreate from "./connectedFormComponent/StreamCreate";
 import StreamEdit from "./streams/StreamEdit";
 import StreamDelete from "./streams/StreamDelete";
-import StreamList from "./streams/StreamList";
+import StreamList from "./connected/StreamList";
 import Header from "./Header";
 
 // OAouthClientId = 252766093641-c780p8g3i3e79o2v6uvc46vqjv8dg2mj.apps.googleusercontent.com
