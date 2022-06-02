@@ -4,7 +4,7 @@ import StreamList from "../streams/StreamList";
 import { fetchStreams } from "../../actions";
 
 const mapStateToProps = (state) => {
-  return { ...state.streams };
+  return { streams: Object.values(state.streams) };
 };
 
 export default connect(mapStateToProps, { fetchStreams })(StreamList);
