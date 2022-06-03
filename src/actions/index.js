@@ -23,13 +23,16 @@ export const signOut = () => {
 };
 
 // ---------------------------------------------------------------------------- CREATE
-export const createStream = (formValues) => async (dispach, getState) => {
-  const { userId } = getState().auth;
+export const createStream =
+  (formValues, navigate) => async (dispach, getState) => {
+    const { userId } = getState().auth;
 
-  const { data } = await streams.post("/streams", { ...formValues, userId });
+    const { data } = await streams.post("/streams", { ...formValues, userId });
 
-  dispach({ type: CREATE_STREAM, payload: data });
-};
+    dispach({ type: CREATE_STREAM, payload: data });
+
+    navigate("/");
+  };
 
 // ---------------------------------------------------------------------------- FETCH MULTIPLE
 export const fetchStreams = () => async (dispach) => {
@@ -56,5 +59,5 @@ export const editStream = (id, updateValue) => async (dispach) => {
 export const deleteStream = (id) => async (dispach) => {
   await streams.delete(`/streams/${id}`);
 
-  dispach({ type: CREATE_STREAM, payload: id });
+  dispach({ type: DELETE_STREAM, payload: id });
 };

@@ -22,7 +22,7 @@ const GoogleOauth = (props) => {
         if (tokenResponse && tokenResponse.access_token)
           if (auth.hasGrantedAnyScope(tokenResponse, "email")) {
             props.signIn(tokenResponse);
-            console.log(auth);
+            // console.log(auth);
           }
       },
     });

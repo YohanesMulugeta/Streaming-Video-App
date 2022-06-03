@@ -1,5 +1,6 @@
 import React from "react";
 import { Field } from "redux-form";
+import { useNavigate } from "react-router-dom";
 
 // -------------------------------------------------- Redux-Form
 // Field is Capital because it is a react component
@@ -31,7 +32,7 @@ class StreamCreate extends React.Component {
   };
 
   onSubmit = (formValues) => {
-    this.props.createStream(formValues);
+    this.props.createStream(formValues, this.props.navigate);
   };
 
   render() {
@@ -55,4 +56,9 @@ class StreamCreate extends React.Component {
   }
 }
 
-export default StreamCreate;
+const WraperFun = (props) => {
+  const navigate = useNavigate();
+  return <StreamCreate {...props} navigate={navigate} />;
+};
+
+export default WraperFun;
