@@ -7,7 +7,7 @@ const StreamList = (props) => {
   }, []);
 
   const renderAdmin = (stream) => {
-    if (stream.userId === props.currentUserId)
+    if (stream.userId === props.currentUserId && props.isSignedIn)
       return (
         <div className="right floated content">
           <button className="button ui primary">Edit</button>
