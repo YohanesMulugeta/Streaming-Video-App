@@ -3,19 +3,29 @@ import { Link } from "react-router-dom";
 
 const StreamList = (props) => {
   useEffect(() => {
+    // ----------------------------------------------------------------- FETCHING streams after the component has rendered
     props.fetchStreams();
   }, []);
 
+  // --------------------------------------------------------------------- BUTTON DELETE AND EDIT
   const renderAdmin = (stream) => {
     if (stream.userId === props.currentUserId && props.isSignedIn)
       return (
         <div className="right floated content">
-          <button className="button ui primary">Edit</button>
-          <button className="button ui negative">Delete</button>
+          <Link to={`/streams/edit/${stream.id}`} className="button ui primary">
+            Edit
+          </Link>
+          <Link
+            to={`/streams/delete/${stream.id}`}
+            className="button ui negative"
+          >
+            Delete
+          </Link>
         </div>
       );
   };
 
+  // -------------------------------------------------------- RENDER    LIST
   const renderList = () => {
     return props.streams.map((stream) => {
       return (
@@ -31,6 +41,7 @@ const StreamList = (props) => {
     });
   };
 
+  // ------------------------------------------------------------- BUTTON CREATE
   const renderCreate = () => {
     // console.log(props.isSignedIn);
     if (props.isSignedIn)
@@ -41,6 +52,7 @@ const StreamList = (props) => {
       );
   };
 
+  // ------------------------------------------ RENDER
   return (
     <div>
       <h2>Streams</h2>

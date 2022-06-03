@@ -56,6 +56,7 @@ class StreamCreate extends React.Component {
   }
 }
 
+// ------------------------------------------------------ wrapping the stream create component to use useNavigation hook
 const WraperFun = (props) => {
   const navigate = useNavigate();
   return <StreamCreate {...props} navigate={navigate} />;

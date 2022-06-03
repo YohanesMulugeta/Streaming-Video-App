@@ -25,8 +25,8 @@ const App = () => {
           <Route path="/" element={<StreamList />} />{" "}
           {/*in the element's prop we pass the component we want to render */}
           <Route path="/streams/new" element={<StreamCreate />} />
-          <Route path="/streams/edit" element={<StreamEdit />} />
-          <Route path="/streams/delete" element={<StreamDelete />} />
+          <Route path="/streams/edit/:id" element={<StreamEdit />} />
+          <Route path="/streams/delete/:id" element={<StreamDelete />} />
           <Route path="/streams/show" element={<StreamShow />} />
         </Routes>
       </BrowserRouter>
