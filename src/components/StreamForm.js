@@ -27,7 +27,10 @@ const FieldComp = ({ input, label, meta }) => {
 
 const StreamForm = (props) => {
   return (
-    <form className=" ui form error">
+    <form
+      className=" ui form error"
+      onSubmit={props.handleSubmit(props.onButtonClick)}
+    >
       <Field name="title" label={props.labelTitle} component={FieldComp} />
       <Field
         name="description"
@@ -42,9 +45,9 @@ const StreamForm = (props) => {
 const validate = (formValues) => {
   const error = {};
 
-  if (!formValues.title) error.title = "Title Field Can Not Be Empity";
+  if (!formValues.title) error.title = "You Must Enter A Title";
   if (!formValues.description)
-    error.description = "Description Field Can Not Be Empity";
+    error.description = "You Must Enter A Description";
 
   return error;
 };

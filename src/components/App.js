@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom"; //
 
 import StreamShow from "./streams/StreamShow";
-import StreamCreate from "./connectedFormComponent/StreamCreate";
+import StreamCreate from "./streams/StreamCreate";
 import StreamEdit from "./streams/StreamEdit";
 import StreamDelete from "./streams/StreamDelete";
 import StreamList from "./connected/StreamList";
