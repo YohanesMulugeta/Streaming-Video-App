@@ -22,9 +22,13 @@ const StreamEdit = () => {
     if (!data) dispach(fetchStream(id));
   }, [dispach]);
 
-  console.log(data);
-
-  return <div>StreamEdit</div>;
+  return (
+    <StreamForm
+      button="Update"
+      labelTitle="Title"
+      labelDescription="Description"
+    />
+  );
 };
 
 export default StreamEdit;
