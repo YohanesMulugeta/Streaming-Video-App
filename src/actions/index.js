@@ -50,7 +50,8 @@ export const fetchStream = (id) => async (dispach) => {
 
 // ---------------------------------------------------------------------------- EDIT
 export const editStream = (id, updateValue) => async (dispach) => {
-  const { data } = await streams.put(`/streams/${id}`);
+  console.log(updateValue);
+  const { data } = await streams.put(`/streams/${id}`, updateValue);
 
   dispach({ type: EDIT_STREAM, payload: data });
 };
