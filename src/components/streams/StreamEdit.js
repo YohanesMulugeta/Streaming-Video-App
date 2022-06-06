@@ -1,3 +1,4 @@
+import _ from "lodash";
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
@@ -25,8 +26,9 @@ const StreamEdit = () => {
     if (!stream) dispatch(fetchStream(id));
   }, [dispatch]);
 
-  const onUpdate = (formValues, id) => {
-    // dispatch(editStream(id, formValues,navigate));
+  const onUpdate = (formValues) => {
+    dispatch(editStream(id, formValues, navigate));
+    console.log(formValues);
   };
 
   if (!stream) return <div>LOADING...</div>;
@@ -36,7 +38,7 @@ const StreamEdit = () => {
       <h3>Edit a Stream</h3>
       <StreamForm
         // ----------------------------------------------------------------------------- setting initial values
-        initialValues={stream}
+        initialValues={_.pick(stream, "title", "description")}
         button="Update"
         onButtonClick={onUpdate}
         labelTitle="Title"
