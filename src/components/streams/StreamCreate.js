@@ -17,12 +17,15 @@ const StreamCreate = (props) => {
   };
 
   return (
-    <StreamForm
-      onButtonClick={onSubmitClick}
-      labelTitle="Enter Title"
-      labelDescription="Enter Description"
-      button="Submit"
-    />
+    <div>
+      <h3>Create a Stream</h3>
+      <StreamForm
+        onButtonClick={onSubmitClick}
+        labelTitle="Enter Title"
+        labelDescription="Enter Description"
+        button="Submit"
+      />
+    </div>
   );
 };
 

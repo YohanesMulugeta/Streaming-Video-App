@@ -18,7 +18,7 @@ const FieldComp = ({ input, label, meta }) => {
     <div className="field">
       <label>{label}</label>
       <input {...input} />
-      <div>{ErrorComp(meta)}</div>
+      {ErrorComp(meta)}
     </div>
   );
 };
@@ -41,6 +41,8 @@ const StreamForm = (props) => {
     </form>
   );
 };
+
+// ----------------------------------------------------------------------- validate
 
 const validate = (formValues) => {
   const error = {};

@@ -49,7 +49,7 @@ export const fetchStream = (id) => async (dispach) => {
 };
 
 // ---------------------------------------------------------------------------- EDIT
-export const editStream = (id, updateValue) => async (dispach) => {
+export const editStream = (id, updateValue, navigate) => async (dispach) => {
   console.log(updateValue);
   const { data } = await streams.put(`/streams/${id}`, updateValue);
 
