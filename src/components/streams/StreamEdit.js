@@ -28,7 +28,7 @@ const StreamEdit = () => {
 
   const onUpdate = (formValues) => {
     dispatch(editStream(id, formValues, navigate));
-    console.log(formValues);
+    // console.log(formValues);
   };
 
   if (!stream) return <div>LOADING...</div>;

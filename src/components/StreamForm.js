@@ -17,7 +17,7 @@ const FieldComp = ({ input, label, meta }) => {
   return (
     <div className="field">
       <label>{label}</label>
-      <input {...input} />
+      <input {...input} autoComplete="off" />
       {ErrorComp(meta)}
     </div>
   );
