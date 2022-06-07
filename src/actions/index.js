@@ -59,8 +59,9 @@ export const editStream = (id, updateValue, navigate) => async (dispach) => {
 };
 
 // ---------------------------------------------------------------------------- DELETE
-export const deleteStream = (id) => async (dispach) => {
+export const deleteStream = (id, navigate) => async (dispach) => {
   await streams.delete(`/streams/${id}`);
 
   dispach({ type: DELETE_STREAM, payload: id });
+  navigate("/");
 };
