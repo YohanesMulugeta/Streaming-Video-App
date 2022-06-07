@@ -12,15 +12,15 @@ const ModalComponent = (props) => {
 
   //  --------------------------------------------- render
   return (
-    <div onClick={hider} className="ui dimmer modals active visible">
+    <div onClick={props.onDismiss} className="ui dimmer modals active visible">
       <div
         //   --------------------------------------------------------------------- STOPING the EVENT PROPAGATION
         onClick={(e) => e.stopPropagation()}
         className="ui standard modal visible active"
       >
-        <div className="header">Delete Stream</div>
+        <div className="header">{props.title}</div>
 
-        <div className="content">Are you sure?</div>
+        <div className="content">{props.content}</div>
 
         <div
           className="actions"
@@ -30,8 +30,7 @@ const ModalComponent = (props) => {
             hider();
           }}
         >
-          <button className=" ui button">Cancel</button>
-          <button className="ui primary button">Delete</button>
+          {props.actions}
         </div>
       </div>
     </div>
