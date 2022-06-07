@@ -62,14 +62,4 @@ const StreamList = (props) => {
   );
 };
 
-// class StreamList extends React.Component {
-//   componentDidMount() {
-//     this.props.fetchStreams();
-//   }
-//   render() {
-//     console.log("pussy");
-//     return <div>StreamLlist</div>;
-//   }
-// }
-
 export default StreamList;
